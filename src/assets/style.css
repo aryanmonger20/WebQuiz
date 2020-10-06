@@ -111,7 +111,7 @@ body{
   background-color: rgb(46, 182, 46);
   color: rgb(255, 255, 255);
   outline: none;
-  cursor: pointer;
+  cursor: pointer; 
 }
 
 
