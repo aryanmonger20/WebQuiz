@@ -1,23 +1,31 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway");
 
+
+:root{
+  --answerBtn: rgb(250, 151, 37);
+  --answerBtnHover: rgb(165, 37, 250);
+  --answerBtnSelectedTrue:  green;
+  --answerBtnSelectedFalse:  red;
+}
+
 * {
   font-family: "Raleway", sans-serif;
 }
 
+body{
+  overflow-y: hidden;
+}
+
 .container {
-  position: absolute;
-  width: 1024px;
-  height: 800px;
+  width: 95vw;
+  height: 98vh;
   border: 1px solid rgba(0, 0, 0, 0.2);
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  padding: 10px;
+  padding: 5px 10px;
   box-sizing: border-box;
-  top: 10px;
-  bottom: 10px;
-  left: 10px;
-  right: 10px;
   margin: auto;
+
 }
 
 .title {
@@ -36,7 +44,10 @@
 }
 
 .questionBox {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
   border: 1px solid rgba(0, 0, 0, 0.2);
   margin-top: 5px;
   padding: 15px;
@@ -44,10 +55,16 @@
   background-color: rgb(250, 250, 250);
 }
 
+.answerBtnContainer{
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: center;
+}
+
 .answerBtn {
   position: relative;
   padding: 10px;
-  background-color: rgb(250, 151, 37);
+  background-color: var(--answerBtn);
   display: inline-block;
   margin: 10px;
   outline: none;
@@ -57,32 +74,52 @@
   font-weight: bold;
   border-radius: 4px;
   cursor: pointer;
+  width: 15vw;
+}
+
+.answerBtn:hover{
+  background-color: var(--answerBtnHover); 
+}
+
+.answerBtn[data-isselected="true"]{
+  background-color: var(--answerBtnSelectedTrue);
+}
+
+.answerBtn[data-isselected="false"]{
+  background-color: var(--answerBtnSelectedFalse);
 }
 
 .score-board {
-  position: relative;
-  height: 700px;
+  height:85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23a52fef' fill-opacity='0.4'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
 }
 
 .score {
-  position: absolute;
   width: 1024px;
   font-size: 3em;
-  top: 250px;
   text-align: center;
 }
 
 .playBtn {
-  position: absolute;
   font-size: 1.4em;
   padding: 10px;
-  top: 350px;
   background-color: rgb(46, 182, 46);
   color: rgb(255, 255, 255);
-  width: 150px;
-  left: 0px;
-  right: 0px;
-  margin: auto;
   outline: none;
-  cursor: pointer;
+  cursor: pointer; 
+}
+
+
+@media screen and (max-width: 770px){
+    body{
+    overflow-y: auto;
+  }
+  .answerBtn {
+    width:35vw;
+  }
 }
